@@ -1,12 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-    <LinearGradientBrush x:Key="MainBackgroundGradientBrush" StartPoint="0,0" EndPoint="0.5,1" >
-        <GradientStop Color="#ff232d3e" Offset="0"/>
-        <GradientStop Color="#ff29354A" Offset="0.5"/>
-        <GradientStop Color="#ff1F2838" Offset="1"/>
-    </LinearGradientBrush>
+    
+    <!--MainWindow colors (for example)
+    Color="#ff232d3e"
+    Color="#ff29354A"
+    Color="#ff1F2838"-->
 
     <SolidColorBrush x:Key="SideBarButtonMouseOverBrush" Color="#ff313F57"/>
     <SolidColorBrush x:Key="SideBarButtonSelectedBrush" Color="#ff384863"/>
+    
+    <SolidColorBrush x:Key="WindowHeaderButtonMouseOverBrush" Color="#FFDBE1EA"/>
+    <SolidColorBrush x:Key="WindowHeaderButtonBrush" Color="#FF6985B3"/>
 </ResourceDictionary>

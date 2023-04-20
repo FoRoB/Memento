@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Memento"
+        xmlns:vm="clr-namespace:Memento.ViewModels"
         mc:Ignorable="d"
-        Height="600" Width="920" WindowStyle="None">
-    <Border>        
+        Height="600" Width="920" WindowStyle="None" ResizeMode="NoResize">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Border>
         <Border.Background>
             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" >
                 <GradientStop Color="#ff232d3e" Offset="0"/>
@@ -26,10 +31,21 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="1"
-                        HorizontalAlignment="Right">
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                <Button Style="{StaticResource WindowHeaderMinimizeButtonStyle}"
+                        Width="25"
+                        Height="25"
+                        Margin="1"/>
+
+                <Button Style="{StaticResource WindowHeaderCloseButtonStyle}"
+                        Width="25"
+                        Height="25"
+                        Margin="2"/>
                 
             </StackPanel>
-            
+
             <TextBlock Text="memento"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
@@ -43,13 +59,13 @@
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
                               Style="{StaticResource SideBarButtonStyle}"/>
-                
+
                 <RadioButton  Content="Calendar"
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
                               Style="{StaticResource SideBarButtonStyle}"/>
-                
+
                 <RadioButton  Content="Flesh-cards"
                               Height="50"
                               Foreground="White"
