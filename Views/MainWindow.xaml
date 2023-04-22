@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Memento"
         xmlns:vm="clr-namespace:Memento.ViewModels"
         mc:Ignorable="d"
-        Height="600" Width="920" WindowStyle="None" ResizeMode="NoResize">
+        Height="600" Width="920" WindowStyle="None" ResizeMode="CanMinimize">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
@@ -37,12 +37,16 @@
                 <Button Style="{StaticResource WindowHeaderMinimizeButtonStyle}"
                         Width="25"
                         Height="25"
-                        Margin="1"/>
+                        Margin="1"
+                        Command="{Binding MinimizeWindowCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
 
                 <Button Style="{StaticResource WindowHeaderCloseButtonStyle}"
                         Width="25"
                         Height="25"
-                        Margin="2"/>
+                        Margin="2"
+                        Command="{Binding CloseWindowCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
                 
             </StackPanel>
 
@@ -66,7 +70,7 @@
                               FontSize="{StaticResource Regular}"
                               Style="{StaticResource SideBarButtonStyle}"/>
 
-                <RadioButton  Content="Flesh-cards"
+                <RadioButton  Content="Flashcards"
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
