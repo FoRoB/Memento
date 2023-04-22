@@ -62,7 +62,9 @@
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
-                              Style="{StaticResource SideBarButtonStyle}"/>
+                              Style="{StaticResource SideBarButtonStyle}"
+                              IsChecked="True"
+                              Command="{Binding ToHomeViewCommand}"/>
 
                 <RadioButton  Content="Calendar"
                               Height="50"
@@ -74,7 +76,8 @@
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
-                              Style="{StaticResource SideBarButtonStyle}"/>
+                              Style="{StaticResource SideBarButtonStyle}"
+                              Command="{Binding ToFlashcardsViewCommand}"/>
 
                 <RadioButton  Content="Exercise"
                               Height="50"
@@ -89,9 +92,11 @@
                               Style="{StaticResource SideBarButtonStyle}"/>
             </StackPanel>
 
-            <ContentControl Grid.Row="2"
+            <ContentControl Grid.Row="1"
+                            Grid.RowSpan="2"
                             Grid.Column="1"
-                            Margin="10"/>
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
         </Grid>
     </Border>
 </Window>
