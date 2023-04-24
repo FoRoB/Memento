@@ -45,7 +45,7 @@
                     <Border Background="Transparent">
                         <Grid>
                             <Path x:Name="Button"
-                                Data="M3, 20 L21,20" 
+                                Data="M3,20 L21,20" 
                                 Stroke="{StaticResource WindowHeaderButtonBrush}" 
                                 StrokeThickness="2"/>
                         </Grid>
@@ -70,7 +70,7 @@
                     <Border Background="Transparent">
                         <Grid>
                             <Path x:Name="Button"
-                                Data="M4, 4 L20,20 M4,20 L20,4" 
+                                Data="M4,4 L20,20 M4,20 L20,4" 
                                 Stroke="{StaticResource WindowHeaderButtonBrush}" 
                                 StrokeThickness="2"/>
                         </Grid>
@@ -86,6 +86,54 @@
     </Style>
     <!--#endregion-->
 
+    <!--#region Delete button style -->
+    <Style x:Key="DeleteButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Transparent">
+                        <Grid>
+                            <Path x:Name="Button"
+                                Data="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" 
+                                Stroke="{StaticResource WindowHeaderButtonBrush}" 
+                                StrokeThickness="2"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Button" Property="Stroke" Value="{StaticResource WindowHeaderButtonMouseOverBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
 
-
+    <!--#region Settings button style -->
+    <Style x:Key="SettingsButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Transparent">
+                        <Grid>
+                            <Path x:Name="Button"
+                                Data="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" 
+                                Stroke="{StaticResource WindowHeaderButtonBrush}" 
+                                StrokeThickness="2"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Button" Property="Stroke" Value="{StaticResource WindowHeaderButtonMouseOverBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+    
 </ResourceDictionary>
