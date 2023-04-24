@@ -86,6 +86,35 @@
     </Style>
     <!--#endregion-->
 
+    <!--#region Add button style -->
+    <Style x:Key="AddButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Transparent">
+                        <Grid Width="{TemplateBinding Width}"
+                              Height="{TemplateBinding Height}">
+                            <Path x:Name="Button"
+                                  Data="M14 7v1H8v6H7V8H1V7h6V1h1v6h6z"
+                                  Fill="Black" 
+                                  StrokeThickness="0.4"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Stretch="Fill"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Button" Property="Fill" Value="{StaticResource WindowHeaderButtonMouseOverBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
     <!--#region Delete button style -->
     <Style x:Key="DeleteButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>

@@ -15,6 +15,27 @@
         <StackPanel>
             <!--с начала должна быть статистика-->
             <!--после кнопки управление наборами-->
+            <!--<StackPanel Orientation="Horizontal">
+                <TextBox Style="{StaticResource SearchBoxStyle}"
+                         Width="150"
+                         Height="30"
+                         Margin="10"/>
+                <Button Style="{StaticResource AddButtonStyle}"
+                        Width="24"
+                        Height="24"/>
+            </StackPanel>-->
+            <DockPanel LastChildFill="False">
+                <TextBox Style="{StaticResource SearchBoxStyle}"
+                         DockPanel.Dock="Left"
+                         Width="150"
+                         Height="30"
+                         Margin="10"/>
+                <Button Style="{StaticResource AddButtonStyle}"
+                        DockPanel.Dock="Right"
+                        Width="24"
+                        Height="24"
+                        Margin="0 0 30 0"/>
+            </DockPanel>
             <ListBox ItemsSource="{Binding Flashcards}"
                      Style="{StaticResource FlashcardsListBoxStyle}"                     
                      HorizontalContentAlignment="Stretch"
