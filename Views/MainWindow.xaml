@@ -41,13 +41,13 @@
                 <StackPanel DockPanel.Dock="Right"
                             Orientation="Horizontal"
                             HorizontalAlignment="Right">
-                    <Button Style="{StaticResource WindowHeaderMinimizeButtonStyle}"
+                    <Button Style="{StaticResource MinimizeWindowButtonStyle}"
                         Width="25"
                         Height="25"
                         Margin="1"
                         Command="{Binding MinimizeWindowCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
-                    <Button Style="{StaticResource WindowHeaderCloseButtonStyle}"
+                    <Button Style="{StaticResource CloseWindowButtonStyle}"
                         Width="25"
                         Height="25"
                         Margin="2"
