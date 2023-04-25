@@ -1,11 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Memento.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
+using System.Windows.Input;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Memento.ViewModels
 {
@@ -13,6 +20,16 @@ namespace Memento.ViewModels
     {
         public ICollection<FlashcardsSet> Flashcards { get; }
 
+        public ICollectionView FilterView { get; }
+
+        private string _Filter = string.Empty;
+        public string Filter
+        {
+            get => _Filter;
+            set => SetProperty(ref _Filter, value);
+        }
+
+        public ICommand AddFlashcardsSet { get; set; }
 
         public FlashcardsViewModel()
         {
@@ -117,6 +134,28 @@ namespace Memento.ViewModels
                 }
             };
             Flashcards = new ObservableCollection<FlashcardsSet>() { fl, fl1, fl2, fl3, fl4, fl5, fl6, fl7, fl8 };
+
+
+            FilterView = CollectionViewSource.GetDefaultView(Flashcards);
+            FilterView.Filter = x =>
+            {
+                if (x is FlashcardsSet flSet)
+                {
+                    return flSet.Name.Contains(Filter) || flSet.Description.Contains(Filter);
+                }
+                return false;
+            };
+
+
+            PropertyChanged += (s, e) =>
+            {
+                switch (e.PropertyName)
+                {
+                    case "Filter":
+                        FilterView.Refresh();
+                        break;
+                }
+            };
         }
     }
 }

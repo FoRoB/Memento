@@ -14,18 +14,9 @@
     <Border Background="#FF464F6B">
         <StackPanel>
             <!--с начала должна быть статистика-->
-            <!--после кнопки управление наборами-->
-            <!--<StackPanel Orientation="Horizontal">
-                <TextBox Style="{StaticResource SearchBoxStyle}"
-                         Width="150"
-                         Height="30"
-                         Margin="10"/>
-                <Button Style="{StaticResource AddButtonStyle}"
-                        Width="24"
-                        Height="24"/>
-            </StackPanel>-->
             <DockPanel LastChildFill="False">
                 <TextBox Style="{StaticResource SearchBoxStyle}"
+                         Text="{Binding Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          DockPanel.Dock="Left"
                          Width="150"
                          Height="30"
@@ -36,7 +27,7 @@
                         Height="24"
                         Margin="0 0 30 0"/>
             </DockPanel>
-            <ListBox ItemsSource="{Binding Flashcards}"
+            <ListBox ItemsSource="{Binding FilterView}"
                      Style="{StaticResource FlashcardsListBoxStyle}"                     
                      HorizontalContentAlignment="Stretch"
                      Height="250"/>
