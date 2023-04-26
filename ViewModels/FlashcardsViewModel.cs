@@ -30,10 +30,13 @@ namespace Memento.ViewModels
         }
 
         public ICommand AddFlashcardsSet { get; set; }
+        public ICommand DeleteFlashcardsSet { get; set; }
+
 
         public FlashcardsViewModel()
         {
             //for test purposes
+            #region test data
             var fl = new FlashcardsSet()
             {
                 Name = "Test",
@@ -132,7 +135,8 @@ namespace Memento.ViewModels
                     new Flashcard() {Question = "what", Answer = "no", Rating = 5},
                     new Flashcard() {Question = "who", Answer = "me", Rating = 3}
                 }
-            };
+            }; 
+            #endregion
             Flashcards = new ObservableCollection<FlashcardsSet>() { fl, fl1, fl2, fl3, fl4, fl5, fl6, fl7, fl8 };
 
 
@@ -145,6 +149,12 @@ namespace Memento.ViewModels
                 }
                 return false;
             };
+
+            DeleteFlashcardsSet = new RelayCommand<FlashcardsSet>((x) =>
+            {
+                if(x == null) return;
+                Flashcards.Remove(x);
+            });
 
 
             PropertyChanged += (s, e) =>
