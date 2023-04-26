@@ -7,15 +7,11 @@ using System.Windows;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Memento.Infrastructure.Interfaces;
 
 namespace Memento.ViewModels
 {
     class MainWindowViewModel : ObservableObject
     {
-        public ICommand CloseWindowCommand { get; set; }
-        public ICommand MinimizeWindowCommand { get; set; }
-        public ICommand DragWindowCommand { get; set; }
         public ICommand ToHomeViewCommand { get; set; }
         public ICommand ToFlashcardsViewCommand { get; set; }
 
@@ -31,9 +27,6 @@ namespace Memento.ViewModels
 
         public MainWindowViewModel()
         {
-            CloseWindowCommand = new RelayCommand<IClosable>(x => x?.Close());
-            MinimizeWindowCommand = new RelayCommand<IMinimizable>(x => x?.Minimize());
-            DragWindowCommand = new RelayCommand<IDraggable>(x => x?.DragMove());
 
             HomeVM = new HomeViewModel();
             FlashcardsVM = new FlashcardsViewModel();

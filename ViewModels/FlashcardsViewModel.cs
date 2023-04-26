@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Memento.Models;
+using Memento.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,9 +11,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Memento.ViewModels
 {
@@ -29,8 +30,8 @@ namespace Memento.ViewModels
             set => SetProperty(ref _Filter, value);
         }
 
-        public ICommand AddFlashcardsSet { get; set; }
-        public ICommand DeleteFlashcardsSet { get; set; }
+        public ICommand AddFlashcardsSetCommand { get; set; }
+        public ICommand DeleteFlashcardsSetCommand { get; set; }
 
 
         public FlashcardsViewModel()
@@ -150,10 +151,14 @@ namespace Memento.ViewModels
                 return false;
             };
 
-            DeleteFlashcardsSet = new RelayCommand<FlashcardsSet>((x) =>
+            DeleteFlashcardsSetCommand = new RelayCommand<FlashcardsSet>((x) =>
             {
                 if(x == null) return;
                 Flashcards.Remove(x);
+            });
+
+            AddFlashcardsSetCommand = new RelayCommand(() =>
+            {
             });
 
 
