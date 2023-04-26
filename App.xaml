@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
                 <ResourceDictionary Source="/Styles/FlashcardsListBoxStyle.xaml"/>
                 <ResourceDictionary Source="/Styles/SearchBoxStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/CustomWindow/CustomWindowStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type vm:HomeViewModel}">
@@ -20,6 +21,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm:FlashcardsViewModel}">
                 <v:FlashcardsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:FlashcardsSetViewModel}">
+                <v:FlashcardsSetView/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
