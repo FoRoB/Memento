@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Memento.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,12 @@ using System.Windows.Input;
 
 namespace Memento.ViewModels
 {
-    class FlashcardsSetWindowViewModel
+    class FlashcardsSetViewModel : ObservableObject
     {
         public ICommand CloseWindowCommand { get; set; }
         public ICommand DragWindowCommand { get; set; }
 
-        public FlashcardsSetWindowViewModel()
+        public FlashcardsSetViewModel()
         {
             CloseWindowCommand = new RelayCommand<IClosable>(x => x?.Close());
             DragWindowCommand = new RelayCommand<IDraggable>(x => x?.DragMove());

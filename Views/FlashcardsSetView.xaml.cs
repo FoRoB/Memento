@@ -1,5 +1,4 @@
-﻿using Memento.Infrastructure.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Memento.Views
 {
     /// <summary>
-    /// Interaction logic for FlashcardsSetWindow.xaml
+    /// Interaction logic for FlashcardsSetView.xaml
     /// </summary>
-    public partial class FlashcardsSetWindow : Window, IClosable, IDraggable
+    public partial class FlashcardsSetView : UserControl
     {
-        public FlashcardsSetWindow()
+        public FlashcardsSetView()
         {
             InitializeComponent();
         }
