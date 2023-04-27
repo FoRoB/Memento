@@ -4,12 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Memento.Views"
-             xmlns:vm="clr-namespace:Memento.ViewModels"
+             xmlns:vm="clr-namespace:Memento.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=vm:FlashcardsSetViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="400">
-    <UserControl.DataContext>
-        <vm:FlashcardsSetViewModel/>
-    </UserControl.DataContext>
+             d:DesignHeight="600" Width="400">
     
     <Border>
         <Border.Background>
@@ -20,39 +18,53 @@
             </LinearGradientBrush>
         </Border.Background>
         <StackPanel>
-            <DockPanel Grid.Column="1"
-                        Background="Transparent">
-                <DockPanel.InputBindings>
-                    <MouseBinding MouseAction="LeftClick" 
-                                  Command="{Binding DragWindowCommand}"
-                                  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
-                </DockPanel.InputBindings>
-
-                <StackPanel DockPanel.Dock="Right"
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Right">
-                    <Button Style="{StaticResource CloseWindowButtonStyle}"
-                        Width="25"
-                        Height="25"
-                        Margin="2"
-                        Command="{Binding CloseWindowCommand}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
-                </StackPanel>
-            </DockPanel>
-            <TextBox Background="Azure"
-                       Text="Name"
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{DynamicResource lang_Name}"
+                       Foreground="White"
                        FontSize="24"/>
+                <Button Style="{StaticResource UndoButtonStyle}"
+                        Width="15"
+                        Height="15"
+                        Margin="10 0 0 0"/>
+            </StackPanel>
+            <TextBox x:Name="NameTextBox" Background="Azure"
+                       Text="{Binding Flashcards.Name}"
+                       FontSize="24"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{DynamicResource lang_Description}"
+                       Foreground="White"
+                       FontSize="25"/>
+                <Button Style="{StaticResource UndoButtonStyle}"
+                        Width="15"
+                        Height="15"
+                        Margin="10 0 0 0"/>
+            </StackPanel>
             <TextBox Background="Beige"
-                       Text="Description"
+                       Text="{Binding Flashcards.Description}"
                        FontSize="20"/>
-            <DockPanel LastChildFill="False">
-                <TextBox Text="Search"
-                         DockPanel.Dock="Left"/>
-
-            </DockPanel>
-            <DataGrid>
-
-            </DataGrid>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{DynamicResource lang_Flashcards}"
+                       Foreground="White"
+                       FontSize="25"/>
+                <Button Style="{StaticResource UndoButtonStyle}"
+                        Width="15"
+                        Height="15"
+                        Margin="10 0 10 0"/>
+                <TextBox Style="{StaticResource SearchBoxStyle}"
+                         HorizontalAlignment="Left"
+                         Width="150"
+                         Height="30"
+                         Margin="5"/>                
+            </StackPanel>
+            <DataGrid ItemsSource="{Binding Flashcards.Flashcards}"
+                      Style="{StaticResource FlashcardsDataGridStyle}"
+                      Height="200"/>
+            <Button Style="{StaticResource DoneButtonStyle}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="25"
+                    Height="25"
+                    Margin="0 7 0 7"/>
         </StackPanel>
     </Border>
 </UserControl>

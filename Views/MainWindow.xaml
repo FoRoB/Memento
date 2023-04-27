@@ -38,7 +38,7 @@
                        FontSize="{StaticResource Big}"/>
 
             <StackPanel Grid.Row="1">
-                <RadioButton  Content="{DynamicResource sideBar_Home}"
+                <RadioButton  Content="{DynamicResource lang_Home}"
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
@@ -46,26 +46,26 @@
                               IsChecked="True"
                               Command="{Binding ToHomeViewCommand}"/>
 
-                <RadioButton  Content="{DynamicResource lang_sideBar_Calendar}"
+                <RadioButton  Content="{DynamicResource lang_Calendar}"
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
                               Style="{StaticResource SideBarButtonStyle}"/>
 
-                <RadioButton  Content="{DynamicResource lang_sideBar_Flashcards}"
+                <RadioButton  Content="{DynamicResource lang_Flashcards}"
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
                               Style="{StaticResource SideBarButtonStyle}"
                               Command="{Binding ToFlashcardsViewCommand}"/>
 
-                <RadioButton  Content="{DynamicResource lang_sideBar_Exercise}"
+                <RadioButton  Content="{DynamicResource lang_Exercise}"
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
                               Style="{StaticResource SideBarButtonStyle}"/>
 
-                <RadioButton  Content="{DynamicResource lang_sideBar_Settings}"
+                <RadioButton  Content="{DynamicResource lang_Settings}"
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"

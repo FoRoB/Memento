@@ -2,15 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <!--#region Main window side bar -->
-    <sys:String x:Key="lang_sideBar_Home">Home</sys:String>
-    <sys:String x:Key="lang_sideBar_Calendar">Calendar</sys:String>
-    <sys:String x:Key="lang_sideBar_Flashcards">Flashcards</sys:String>
-    <sys:String x:Key="lang_sideBar_Exercise">Exercise</sys:String>
-    <sys:String x:Key="lang_sideBar_Settings">Settings</sys:String>
-    <!--#endregion-->
-
-    <sys:String x:Key="lang_searchBox">Search</sys:String>
+    <sys:String x:Key="lang_Home">Home</sys:String>
+    <sys:String x:Key="lang_Calendar">Calendar</sys:String>
+    <sys:String x:Key="lang_Flashcards">Flashcards</sys:String>
+    <sys:String x:Key="lang_Exercise">Exercise</sys:String>
+    <sys:String x:Key="lang_Settings">Settings</sys:String>
+    <sys:String x:Key="lang_Search">Search</sys:String>
     <sys:String x:Key="lang_Name">Name</sys:String>
     <sys:String x:Key="lang_Description">Description</sys:String>
 

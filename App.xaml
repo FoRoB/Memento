@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
                 <ResourceDictionary Source="/Styles/FlashcardsListBoxStyle.xaml"/>
                 <ResourceDictionary Source="/Styles/SearchBoxStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/FlashcardsDataGridStyle.xaml"/>
                 <ResourceDictionary Source="/Styles/CustomWindow/CustomWindowStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
