@@ -10,6 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/FontStyles.xaml"/>
                 <ResourceDictionary Source="/Styles/Colors.xaml"/>
+                <ResourceDictionary Source="/Localization/lang.xaml"/>
                 <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
                 <ResourceDictionary Source="/Styles/FlashcardsListBoxStyle.xaml"/>
                 <ResourceDictionary Source="/Styles/SearchBoxStyle.xaml"/>

@@ -23,7 +23,7 @@
                                      Padding="5"
                                      Margin="1"/>
 
-                            <TextBlock Text="Search"
+                            <TextBlock Text="{DynamicResource lang_searchBox}"
                                        IsHitTestVisible="False"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
