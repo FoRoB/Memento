@@ -9,56 +9,89 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace Memento.ViewModels
 {
     class FlashcardsSetViewModel : ObservableObject
     {
-        public ICommand UpdateSources;
+        public ICommand ResetNameCommand { get; set; }
+        public ICommand ResetDescriptionCommand { get; set; }
+        public ICommand ResetFlashcardsCommand { get; set; }
+        public ICommand DoneCommand { get; set; }
 
-        private FlashcardsSet _Flashcards;
-        public FlashcardsSet Flashcards
+        public FlashcardsSet OriginalFcSet { get; }
+
+        private string _Name = string.Empty;
+        public string Name
         {
-            get => _Flashcards;
-            set => SetProperty(ref _Flashcards, value);
+            get => _Name;
+            set => SetProperty(ref _Name, value);
         }
 
-        private ICollection<Flashcard> _fl;
-
-        public ICollection<Flashcard> FL
+        private string _Description;
+        public string Description
         {
-            get { return _fl; }
-            set => SetProperty(ref _fl, value);
+            get => _Description;
+            set => SetProperty(ref _Description, value);
         }
 
+        public ICollection<Flashcard> Flashcards { get; set; }
 
-        private int myVar;
-        public int MyProperty
+        public ICollectionView FlashcardsView { get; }
+
+        private string _Search = string.Empty;
+        public string Search
         {
-            get { return myVar; }
-            set { SetProperty(ref myVar, value); }
+            get => _Search;
+            set => SetProperty(ref _Search, value);
         }
+
 
 
         public FlashcardsSetViewModel()
         {
-            var fl = new ObservableCollection<Flashcard>()
-                {
-                    new Flashcard() {Question = "what", Answer = "yes", Rating = 1},
-                    new Flashcard() {Question = "what", Answer = "no", Rating = 5},
-                    new Flashcard() {Question = "what", Answer = "no", Rating = 5},
-                    new Flashcard() {Question = "what", Answer = "no", Rating = 5},
-                    new Flashcard() {Question = "what", Answer = "no", Rating = 5},
-                    new Flashcard() {Question = "what", Answer = "no", Rating = 5},
-                    new Flashcard() {Question = "who", Answer = "me", Rating = 3}
-                };
-            FL = fl;
+
         }
 
         public FlashcardsSetViewModel(FlashcardsSet fs)
         {
-            Flashcards = fs;
+            OriginalFcSet = fs;
+
+            Name = OriginalFcSet.Name;
+            Description = OriginalFcSet.Description;
+            Flashcards = OriginalFcSet.CopyFlashcardsTo(new ObservableCollection<Flashcard>());
+
+            ResetNameCommand = new RelayCommand(() => Name = OriginalFcSet.Name);
+            ResetDescriptionCommand = new RelayCommand(() => Description = OriginalFcSet.Description);
+            ResetFlashcardsCommand = new RelayCommand(() => Flashcards = OriginalFcSet.CopyFlashcardsTo(new ObservableCollection<Flashcard>()));
+            DoneCommand = new RelayCommand(() =>
+            {
+                OriginalFcSet.Name = Name;
+                OriginalFcSet.Description = Description;
+                OriginalFcSet.Flashcards = Flashcards;
+            });
+
+            FlashcardsView = CollectionViewSource.GetDefaultView(Flashcards);
+            FlashcardsView.Filter = x =>
+            {
+                if (x is Flashcard fc)
+                {
+                    return fc.Question.Contains(Search) || fc.Answer.Contains(Search);
+                }
+                return false;
+            };
+
+            PropertyChanged += (s, e) =>
+            {
+                switch (e.PropertyName)
+                {
+                    case "Search":
+                        FlashcardsView.Refresh();
+                        break;
+                }
+            };
         }
     }
 }

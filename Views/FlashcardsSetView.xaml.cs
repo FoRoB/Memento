@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,13 @@ namespace Memento.Views
         public FlashcardsSetView()
         {
             InitializeComponent();
+        }
+
+        private void DoneButton_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = (ViewModels.FlashcardsSetViewModel)DataContext;
+            vm.DoneCommand.Execute(null);
+            Window.GetWindow(this).Close();
         }
     }
 }

@@ -23,43 +23,48 @@
                        Foreground="White"
                        FontSize="24"/>
                 <Button Style="{StaticResource UndoButtonStyle}"
+                        Command="{Binding ResetNameCommand}"
                         Width="15"
                         Height="15"
                         Margin="10 0 0 0"/>
             </StackPanel>
             <TextBox x:Name="NameTextBox" Background="Azure"
-                       Text="{Binding Flashcards.Name}"
+                       Text="{Binding Name}"
                        FontSize="24"/>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{DynamicResource lang_Description}"
                        Foreground="White"
                        FontSize="25"/>
                 <Button Style="{StaticResource UndoButtonStyle}"
+                        Command="{Binding ResetDescriptionCommand}"
                         Width="15"
                         Height="15"
                         Margin="10 0 0 0"/>
             </StackPanel>
             <TextBox Background="Beige"
-                       Text="{Binding Flashcards.Description}"
+                       Text="{Binding Description}"
                        FontSize="20"/>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{DynamicResource lang_Flashcards}"
                        Foreground="White"
                        FontSize="25"/>
                 <Button Style="{StaticResource UndoButtonStyle}"
+                        Command="{Binding ResetFlashcardsCommand}"
                         Width="15"
                         Height="15"
                         Margin="10 0 10 0"/>
                 <TextBox Style="{StaticResource SearchBoxStyle}"
+                         Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
                          HorizontalAlignment="Left"
                          Width="150"
                          Height="30"
-                         Margin="5"/>                
+                         Margin="5"/>
             </StackPanel>
-            <DataGrid ItemsSource="{Binding Flashcards.Flashcards}"
+            <DataGrid ItemsSource="{Binding Flashcards}"
                       Style="{StaticResource FlashcardsDataGridStyle}"
                       Height="200"/>
             <Button Style="{StaticResource DoneButtonStyle}"
+                    Click="DoneButton_Click"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Width="25"

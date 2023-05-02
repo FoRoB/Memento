@@ -16,7 +16,7 @@
             <!--с начала должна быть статистика-->
             <DockPanel LastChildFill="False">
                 <TextBox Style="{StaticResource SearchBoxStyle}"
-                         Text="{Binding Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}"
                          DockPanel.Dock="Left"
                          Width="150"
                          Height="30"

@@ -137,7 +137,7 @@ namespace Memento.ViewModels
                     new Flashcard() {Question = "what", Answer = "no", Rating = 5},
                     new Flashcard() {Question = "who", Answer = "me", Rating = 3}
                 }
-            }; 
+            };
             #endregion
             Flashcards = new ObservableCollection<FlashcardsSet>() { fl, fl1, fl2, fl3, fl4, fl5, fl6, fl7, fl8 };
 
@@ -152,20 +152,34 @@ namespace Memento.ViewModels
                 return false;
             };
 
+            AddFlashcardsSetCommand = new RelayCommand(() =>
+            {
+                var fcSet = new FlashcardsSet();
+                var win = new Window()
+                {
+                    Style = (Style)Application.Current.FindResource("CustomSubWindowStyle"),
+                    Content = new FlashcardsSetViewModel(fcSet)
+                };
+                win.ShowDialog();
+                Flashcards.Add(fcSet);
+            });
+
             DeleteFlashcardsSetCommand = new RelayCommand<FlashcardsSet>((x) =>
             {
-                if(x == null) return;
+                if (x == null) return;
                 Flashcards.Remove(x);
             });
 
             SettingFlashcardsSetCommand = new RelayCommand<FlashcardsSet>((x) =>
             {
+                if (x == null) return;
                 var win = new Window()
                 {
                     Style = (Style)Application.Current.FindResource("CustomSubWindowStyle"),
                     Content = new FlashcardsSetViewModel(x)
                 };
-                win.Show();
+                win.ShowDialog();
+                FilterView.Refresh();
             });
 
 
