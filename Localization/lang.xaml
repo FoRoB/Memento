@@ -10,5 +10,8 @@
     <sys:String x:Key="lang_Search">Search</sys:String>
     <sys:String x:Key="lang_Name">Name</sys:String>
     <sys:String x:Key="lang_Description">Description</sys:String>
+    <sys:String x:Key="lang_Restart">Restart</sys:String>
+    <sys:String x:Key="lang_ShowAnswer">Show answer</sys:String>
+    <sys:String x:Key="lang_HideAnswer">Hide answer</sys:String>
 
 </ResourceDictionary>
