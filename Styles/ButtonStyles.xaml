@@ -297,13 +297,13 @@
                     <Border x:Name="Border" Background="{TemplateBinding Background}">
                         <Grid Width="24"
                               Height="24">
-                            <ContentPresenter HorizontalAlignment="Center"
+                            <ContentPresenter x:Name="Presenter" HorizontalAlignment="Center"
                                               VerticalAlignment="Center"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="white"/>
+                            <Setter Property="Foreground" Value="white"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

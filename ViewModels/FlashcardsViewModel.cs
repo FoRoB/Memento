@@ -33,6 +33,7 @@ namespace Memento.ViewModels
         public ICommand AddFlashcardsSetCommand { get; set; }
         public ICommand DeleteFlashcardsSetCommand { get; set; }
         public ICommand SettingFlashcardsSetCommand { get; set; }
+        public ICommand StartFlashcardsSetCommand { get; set; }
 
 
         public FlashcardsViewModel()
@@ -180,6 +181,17 @@ namespace Memento.ViewModels
                 };
                 win.ShowDialog();
                 FilterView.Refresh();
+            });
+
+            StartFlashcardsSetCommand = new RelayCommand<FlashcardsSet>((x) =>
+            {
+                if (x == null) return;
+                var win = new Window()
+                {
+                    Style = (Style)Application.Current.FindResource("CustomSubWindowStyle"),
+                    Content = new FlashcardsSetPerformViewModel(x)
+                };
+                win.ShowDialog();
             });
 
 

@@ -24,5 +24,11 @@ namespace Memento.Views
         {
             InitializeComponent();
         }
+
+        private void ShowButton_Click(object sender, RoutedEventArgs e)
+        {
+            AnswerTextBlock.Visibility = AnswerTextBlock.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            ShowButton.Content = ShowButton.Content.ToString() == FindResource("lang_ShowAnswer").ToString() ? FindResource("lang_HideAnswer") : FindResource("lang_ShowAnswer");
+        }
     }
 }

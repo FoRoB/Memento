@@ -19,39 +19,47 @@
         <StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Border x:Name="CurrentRatingDisplayColor">
-                    <TextBlock x:Name="CurrentRatingDisplay"/>
+                    <TextBlock x:Name="CurrentRatingDisplay"
+                               Text="{Binding Rating}"/>
                 </Border>
-                <TextBlock Text="question"
+                <TextBlock Text="{Binding Question}"
                        Foreground="White"
                        FontSize="24"
                        HorizontalAlignment="Center"/>
             </StackPanel>
-            <TextBlock Text="answer"
+            <TextBlock x:Name="AnswerTextBlock" 
+                       Text="{Binding Answer}"
                        Foreground="white"
                        FontSize="24"
                        Margin="0 7 0 7"/>
-            <Button Style="{StaticResource ShowAnswerButtonStyle}"
+            <Button x:Name="ShowButton" 
+                    Style="{StaticResource ShowAnswerButtonStyle}"
+                    Content="{DynamicResource lang_ShowAnswer}"
+                    Click="ShowButton_Click"
                     Width="80"
-                    Height="24"
-                    Content="{DynamicResource lang_ShowAnswer}"/>
+                    Height="24"/>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         Margin="0 7 0 7">
-                <Button x:Name="bad" Style="{StaticResource RatingButtonStyle}"
-                        Background="#66271C"
-                        Foreground="white"
+                <Button Style="{StaticResource RatingButtonStyle}"
+                        Background="{StaticResource FlashcardRating1}"
+                        Command="{Binding ChangeRatingTo1Command}"
                         Content="1"/>
                 <Button Style="{StaticResource RatingButtonStyle}"
-                        Background="#734318"
+                        Background="{StaticResource FlashcardRating2}"
+                        Command="{Binding ChangeRatingTo2Command}"
                         Content="2"/>
                 <Button Style="{StaticResource RatingButtonStyle}"
-                        Background="#5C4A18"
+                        Background="{StaticResource FlashcardRating3}"
+                        Command="{Binding ChangeRatingTo3Command}"
                         Content="3"/>
                 <Button Style="{StaticResource RatingButtonStyle}"
-                        Background="#736F18"
+                        Background="{StaticResource FlashcardRating4}"
+                        Command="{Binding ChangeRatingTo4Command}"
                         Content="4"/>
                 <Button Style="{StaticResource RatingButtonStyle}"
-                        Background="#356916"
+                        Background="{StaticResource FlashcardRating5}"
+                        Command="{Binding ChangeRatingTo5Command}"
                         Content="5"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -59,7 +67,7 @@
                     <Path Data="M19.71,9.29l-7-7a1,1,0,0,0-1.42,0l-7,7a1,1,0,0,0,1.42,1.42L11,5.41V21a1,1,0,0,0,2,0V5.41l5.29,5.3a1,1,0,0,0,1.42,0A1,1,0,0,0,19.71,9.29Z"
                           Fill="Green"
                           Stretch="Fill"/>
-                    <TextBlock Text="da"
+                    <TextBlock Text="{Binding RatingUp}"
                                Foreground="White"
                                VerticalAlignment="Center"/>
                 </StackPanel>
@@ -67,13 +75,14 @@
                     <Path Data="M19.71,13.29a1,1,0,0,0-1.42,0L13,18.59V3a1,1,0,0,0-2,0V18.59l-5.29-5.3a1,1,0,0,0-1.42,1.42l7,7a1,1,0,0,0,1.42,0l7-7A1,1,0,0,0,19.71,13.29Z"
                           Fill="Red"
                           Stretch="Fill"/>
-                    <TextBlock Text="da"
+                    <TextBlock Text="{Binding RatingDown}"
                                Foreground="White"
                                VerticalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button Style="{StaticResource UndoButtonStyle2}"
                             Content="{DynamicResource lang_Restart}"
+                            Command="{Binding RestartCommand}"
                             Foreground="white"
                             Height="24"/>
                 </StackPanel>

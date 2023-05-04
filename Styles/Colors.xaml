@@ -11,4 +11,13 @@
     
     <SolidColorBrush x:Key="WindowHeaderButtonMouseOverBrush" Color="#FFDBE1EA"/>
     <SolidColorBrush x:Key="WindowHeaderButtonBrush" Color="#FF6985B3"/>
+
+    <!--#region Flashcard rating colors -->
+    <SolidColorBrush x:Key="FlashcardRating1" Color="#66271C"/>
+    <SolidColorBrush x:Key="FlashcardRating2" Color="#734318"/>
+    <SolidColorBrush x:Key="FlashcardRating3" Color="#5C4A18"/>
+    <SolidColorBrush x:Key="FlashcardRating4" Color="#736F18"/>
+    <SolidColorBrush x:Key="FlashcardRating5" Color="#356916"/>
+    <!--#endregion-->
+
 </ResourceDictionary>
