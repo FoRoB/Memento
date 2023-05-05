@@ -18,7 +18,8 @@
         </Border.Background>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Border x:Name="CurrentRatingDisplayColor">
+                <Border x:Name="CurrentRatingDisplayColor"
+                        Background="{Binding RatingColor}">
                     <TextBlock x:Name="CurrentRatingDisplay"
                                Text="{Binding Rating}"/>
                 </Border>
@@ -31,7 +32,8 @@
                        Text="{Binding Answer}"
                        Foreground="white"
                        FontSize="24"
-                       Margin="0 7 0 7"/>
+                       Margin="0 7 0 7"
+                       Visibility="Collapsed"/>
             <Button x:Name="ShowButton" 
                     Style="{StaticResource ShowAnswerButtonStyle}"
                     Content="{DynamicResource lang_ShowAnswer}"

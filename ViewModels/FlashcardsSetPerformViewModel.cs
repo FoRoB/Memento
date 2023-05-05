@@ -6,8 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Memento.ViewModels
 {
@@ -34,6 +36,13 @@ namespace Memento.ViewModels
         {
             get => _Rating;
             set => SetProperty(ref _Rating, value);
+        }
+
+        private SolidColorBrush _RatingColor;
+        public SolidColorBrush RatingColor
+        {
+            get => _RatingColor;
+            set => SetProperty(ref _RatingColor, value);
         }
 
         private int _RatingUp;
@@ -69,25 +78,44 @@ namespace Memento.ViewModels
         public FlashcardsSetPerformViewModel(FlashcardsSet flashcardsSet)
         {
             FcSet = flashcardsSet;
-            Initialize();
+            FcEnumerator = FcSet.GetSortedEnumerator();
 
             ChangeRatingTo1Command = new RelayCommand(() => ChangeRating(1), () => CanProceed);
             ChangeRatingTo2Command = new RelayCommand(() => ChangeRating(2), () => CanProceed);
             ChangeRatingTo3Command = new RelayCommand(() => ChangeRating(3), () => CanProceed);
             ChangeRatingTo4Command = new RelayCommand(() => ChangeRating(4), () => CanProceed);
             ChangeRatingTo5Command = new RelayCommand(() => ChangeRating(5), () => CanProceed);
-            RestartCommand = new RelayCommand(() => Initialize());
+            RestartCommand = new RelayCommand(() => Restart());
+
+            PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "Rating")
+                    RatingColor = ChangeRatingColor();
+            };
+            Initialize();
         }
 
         private void Initialize()
         {
-            FcEnumerator = FcSet.GetSortedEnumerator();
             CanProceed = FcEnumerator.MoveNext();
             Question = FcEnumerator.Current.Question;
             Answer = FcEnumerator.Current.Answer;
             Rating = FcEnumerator.Current.Rating;
+            OnPropertyChanged();
+        }
+
+        private void Restart()
+        {
+            FcEnumerator = FcSet.GetSortedEnumerator();
             RatingUp = 0;
             RatingDown = 0;
+            Initialize();
+        }
+
+        private SolidColorBrush ChangeRatingColor()
+        {
+            if (Rating <= 0 || Rating > 5) return new SolidColorBrush(Colors.Transparent);
+            return (SolidColorBrush)Application.Current.FindResource($"FlashcardRating{Rating}");
         }
 
         private void ChangeRating(int rating)
@@ -97,11 +125,7 @@ namespace Memento.ViewModels
             if (FcEnumerator.Current.Rating > rating)
                 RatingDown++;
             FcEnumerator.Current.Rating = rating;
-            CanProceed = FcEnumerator.MoveNext();
-            Question = FcEnumerator.Current.Question;
-            Answer = FcEnumerator.Current.Answer;
-            Rating = FcEnumerator.Current.Rating;
-            OnPropertyChanged();
+            Initialize();
         }
     }
 }
