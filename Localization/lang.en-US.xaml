@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="lang_Home">Home</sys:String>
+    <sys:String x:Key="lang_Calendar">Calendar</sys:String>
+    <sys:String x:Key="lang_Flashcards">Flashcards</sys:String>
+    <sys:String x:Key="lang_Exercise">Exercise</sys:String>
+    <sys:String x:Key="lang_Settings">Settings</sys:String>
+    <sys:String x:Key="lang_Search">Search</sys:String>
+    <sys:String x:Key="lang_Name">Name</sys:String>
+    <sys:String x:Key="lang_Description">Description</sys:String>
+    <sys:String x:Key="lang_Restart">Restart</sys:String>
+    <sys:String x:Key="lang_ShowAnswer">Show answer</sys:String>
+    <sys:String x:Key="lang_HideAnswer">Hide answer</sys:String>
+    <sys:String x:Key="lang_Language">Language</sys:String>
+    <sys:String x:Key="lang_NBack">-n back</sys:String>
+    <sys:String x:Key="lang_Russian">Russian</sys:String>
+    <sys:String x:Key="lang_English">English</sys:String>
+
+</ResourceDictionary>

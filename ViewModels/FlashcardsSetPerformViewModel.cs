@@ -114,7 +114,8 @@ namespace Memento.ViewModels
 
         private SolidColorBrush ChangeRatingColor()
         {
-            if (Rating <= 0 || Rating > 5) return new SolidColorBrush(Colors.Transparent);
+            if (Rating <= 0 || Rating > 5)
+                return new SolidColorBrush(Colors.Transparent);
             return (SolidColorBrush)Application.Current.FindResource($"FlashcardRating{Rating}");
         }
 

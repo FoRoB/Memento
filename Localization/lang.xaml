@@ -2,16 +2,20 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:String x:Key="lang_Home">Home</sys:String>
-    <sys:String x:Key="lang_Calendar">Calendar</sys:String>
-    <sys:String x:Key="lang_Flashcards">Flashcards</sys:String>
-    <sys:String x:Key="lang_Exercise">Exercise</sys:String>
-    <sys:String x:Key="lang_Settings">Settings</sys:String>
-    <sys:String x:Key="lang_Search">Search</sys:String>
-    <sys:String x:Key="lang_Name">Name</sys:String>
-    <sys:String x:Key="lang_Description">Description</sys:String>
-    <sys:String x:Key="lang_Restart">Restart</sys:String>
-    <sys:String x:Key="lang_ShowAnswer">Show answer</sys:String>
-    <sys:String x:Key="lang_HideAnswer">Hide answer</sys:String>
+    <sys:String x:Key="lang_Home">Главная</sys:String>
+    <sys:String x:Key="lang_Calendar">Календарь</sys:String>
+    <sys:String x:Key="lang_Flashcards">Флеш-карты</sys:String>
+    <sys:String x:Key="lang_Exercise">Упражнения</sys:String>
+    <sys:String x:Key="lang_Settings">Настройки</sys:String>
+    <sys:String x:Key="lang_Search">Поиск</sys:String>
+    <sys:String x:Key="lang_Name">Название</sys:String>
+    <sys:String x:Key="lang_Description">Описание</sys:String>
+    <sys:String x:Key="lang_Restart">Заново</sys:String>
+    <sys:String x:Key="lang_ShowAnswer">Показать ответ</sys:String>
+    <sys:String x:Key="lang_HideAnswer">Спрятать ответ</sys:String>
+    <sys:String x:Key="lang_Language">Язык</sys:String>
+    <sys:String x:Key="lang_NBack">-n назад</sys:String>
+    <sys:String x:Key="lang_Russian">Русский</sys:String>
+    <sys:String x:Key="lang_English">Английский</sys:String>
 
 </ResourceDictionary>

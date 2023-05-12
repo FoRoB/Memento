@@ -45,31 +45,23 @@
                               Style="{StaticResource SideBarButtonStyle}"
                               IsChecked="True"
                               Command="{Binding ToHomeViewCommand}"/>
-
-                <RadioButton  Content="{DynamicResource lang_Calendar}"
-                              Height="50"
-                              Foreground="White"
-                              FontSize="{StaticResource Regular}"
-                              Style="{StaticResource SideBarButtonStyle}"/>
-
                 <RadioButton  Content="{DynamicResource lang_Flashcards}"
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
                               Style="{StaticResource SideBarButtonStyle}"
                               Command="{Binding ToFlashcardsViewCommand}"/>
-
                 <RadioButton  Content="{DynamicResource lang_Exercise}"
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
                               Style="{StaticResource SideBarButtonStyle}"/>
-
                 <RadioButton  Content="{DynamicResource lang_Settings}"
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
-                              Style="{StaticResource SideBarButtonStyle}"/>
+                              Style="{StaticResource SideBarButtonStyle}"
+                              Command="{Binding ToSettingsViewCommand}"/>
             </StackPanel>
 
             <ContentControl Grid.Row="0"

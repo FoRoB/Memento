@@ -19,9 +19,12 @@
         <StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Border x:Name="CurrentRatingDisplayColor"
-                        Background="{Binding RatingColor}">
+                        Background="{Binding RatingColor}"
+                        Width="20">
                     <TextBlock x:Name="CurrentRatingDisplay"
-                               Text="{Binding Rating}"/>
+                               Text="{Binding Rating}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
                 </Border>
                 <TextBlock Text="{Binding Question}"
                        Foreground="White"
@@ -64,31 +67,35 @@
                         Command="{Binding ChangeRatingTo5Command}"
                         Content="5"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Horizontal">
-                    <Path Data="M19.71,9.29l-7-7a1,1,0,0,0-1.42,0l-7,7a1,1,0,0,0,1.42,1.42L11,5.41V21a1,1,0,0,0,2,0V5.41l5.29,5.3a1,1,0,0,0,1.42,0A1,1,0,0,0,19.71,9.29Z"
+            <DockPanel LastChildFill="False">
+                <StackPanel DockPanel.Dock="Left" 
+                            Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="M19.71,9.29l-7-7a1,1,0,0,0-1.42,0l-7,7a1,1,0,0,0,1.42,1.42L11,5.41V21a1,1,0,0,0,2,0V5.41l5.29,5.3a1,1,0,0,0,1.42,0A1,1,0,0,0,19.71,9.29Z"
                           Fill="Green"
                           Stretch="Fill"/>
-                    <TextBlock Text="{Binding RatingUp}"
+                        <TextBlock Text="{Binding RatingUp}"
                                Foreground="White"
                                VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Path Data="M19.71,13.29a1,1,0,0,0-1.42,0L13,18.59V3a1,1,0,0,0-2,0V18.59l-5.29-5.3a1,1,0,0,0-1.42,1.42l7,7a1,1,0,0,0,1.42,0l7-7A1,1,0,0,0,19.71,13.29Z"
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="M19.71,13.29a1,1,0,0,0-1.42,0L13,18.59V3a1,1,0,0,0-2,0V18.59l-5.29-5.3a1,1,0,0,0-1.42,1.42l7,7a1,1,0,0,0,1.42,0l7-7A1,1,0,0,0,19.71,13.29Z"
                           Fill="Red"
                           Stretch="Fill"/>
-                    <TextBlock Text="{Binding RatingDown}"
+                        <TextBlock Text="{Binding RatingDown}"
                                Foreground="White"
                                VerticalAlignment="Center"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel DockPanel.Dock="Right" 
+                            Orientation="Horizontal">
                     <Button Style="{StaticResource UndoButtonStyle2}"
                             Content="{DynamicResource lang_Restart}"
                             Command="{Binding RestartCommand}"
                             Foreground="white"
                             Height="24"/>
                 </StackPanel>
-            </StackPanel>
+            </DockPanel>            
         </StackPanel>
     </Border>
 </UserControl>

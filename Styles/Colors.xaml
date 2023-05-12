@@ -12,6 +12,8 @@
     <SolidColorBrush x:Key="WindowHeaderButtonMouseOverBrush" Color="#FFDBE1EA"/>
     <SolidColorBrush x:Key="WindowHeaderButtonBrush" Color="#FF6985B3"/>
 
+    <SolidColorBrush x:Key="MainUserControlBackgroundBrush" Color="#FF464F6B"/>    
+    
     <!--#region Flashcard rating colors -->
     <SolidColorBrush x:Key="FlashcardRating1" Color="#66271C"/>
     <SolidColorBrush x:Key="FlashcardRating2" Color="#734318"/>

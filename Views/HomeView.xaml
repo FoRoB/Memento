@@ -4,10 +4,53 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Memento.Views"
+             xmlns:vm="clr-namespace:Memento.ViewModels"
+             d:DataContext="{d:DesignInstance Type=vm:HomeViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="700">
     
-    <Border Background="Gray">
-        
+    <Border Background="{StaticResource MainUserControlBackgroundBrush}">
+        <StackPanel>
+            <Border Background="#4E6982"
+                    CornerRadius="25"
+                    Width="600"
+                    Height="150"
+                    Margin="0 30 0 0">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Статистика наборов флеш-карт"
+                               Foreground="White"
+                               FontSize="22"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Доступно наборов флеш-карт: 8"
+                               Foreground="White"
+                               FontSize="18"
+                               Margin="0 10 0 0"/>
+                    <TextBlock Text="Последний запущенный набор флеш-карт: Правда или ложь"
+                               Foreground="White"
+                               FontSize="18"
+                               Margin="0 10 0 0"/>
+                </StackPanel>
+            </Border>
+            <Border Background="#4E6982"
+                    CornerRadius="25"
+                    Width="600"
+                    Height="150"
+                    Margin="0 30 0 0">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Статистика упражнений"
+                               Foreground="White"
+                               FontSize="22"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Доступно упражнений: 2"
+                               Foreground="White"
+                               FontSize="18"
+                               Margin="0 10 0 0"/>
+                    <TextBlock Text="Последнее запущенное упражнение: 2-n назад"
+                               Foreground="White"
+                               FontSize="18"
+                               Margin="0 10 0 0"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
     </Border>
 </UserControl>

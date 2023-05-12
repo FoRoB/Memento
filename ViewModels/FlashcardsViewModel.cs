@@ -1,25 +1,31 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Memento.Infrastructure;
+using Memento.Infrastructure.Interfaces;
 using Memento.Models;
 using Memento.Views;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace Memento.ViewModels
 {
-    class FlashcardsViewModel : ObservableObject
+    class FlashcardsViewModel : ObservableObject, IDisposableViewModel
     {
-        public ICollection<FlashcardsSet> Flashcards { get; }
+        public ObservableCollection<FlashcardsSet> Flashcards { get; }
 
         public ICollectionView FilterView { get; }
 
@@ -42,8 +48,8 @@ namespace Memento.ViewModels
             #region test data
             var fl = new FlashcardsSet()
             {
-                Name = "Test",
-                Description = "Test",
+                Name = "Полководцы",
+                Description = "Имена полководцев",
                 Flashcards = new ObservableCollection<Flashcard>()
                 {
                     new Flashcard() {Question = "what", Answer = "yes", Rating = 1},
@@ -53,19 +59,20 @@ namespace Memento.ViewModels
             };
             var fl1 = new FlashcardsSet()
             {
-                Name = "Test1",
-                Description = "Test",
+                Name = "Правда или ложь",
+                Description = "Ответа только два",
                 Flashcards = new ObservableCollection<Flashcard>()
                 {
-                    new Flashcard() {Question = "what", Answer = "yes", Rating = 1},
-                    new Flashcard() {Question = "what", Answer = "no", Rating = 5},
-                    new Flashcard() {Question = "who", Answer = "me", Rating = 3}
+                    new Flashcard() {Question = "C# - язык низкого уровня", Answer = "ложь", Rating = 1},
+                    new Flashcard() {Question = "Unity использует C#", Answer = "правда", Rating = 2},
+                    new Flashcard() {Question = "Python наследует синтаксис семейства С", Answer = "ложь", Rating = 2},
+                    new Flashcard() {Question = "В C# запрещено множественное наследование", Answer = "правда", Rating = 4}
                 }
             };
             var fl2 = new FlashcardsSet()
             {
-                Name = "Test2",
-                Description = "Test",
+                Name = "Английские слова",
+                Description = "Перевод на русский",
                 Flashcards = new ObservableCollection<Flashcard>()
                 {
                     new Flashcard() {Question = "what", Answer = "yes", Rating = 1},
@@ -75,8 +82,8 @@ namespace Memento.ViewModels
             };
             var fl3 = new FlashcardsSet()
             {
-                Name = "Test3",
-                Description = "Test",
+                Name = "Хирагана",
+                Description = "Японский алфавит",
                 Flashcards = new ObservableCollection<Flashcard>()
                 {
                     new Flashcard() {Question = "what", Answer = "yes", Rating = 1},
@@ -86,8 +93,8 @@ namespace Memento.ViewModels
             };
             var fl4 = new FlashcardsSet()
             {
-                Name = "Test4",
-                Description = "Test",
+                Name = "Катакана",
+                Description = "Японский алфавит",
                 Flashcards = new ObservableCollection<Flashcard>()
                 {
                     new Flashcard() {Question = "what", Answer = "yes", Rating = 1},
@@ -97,8 +104,8 @@ namespace Memento.ViewModels
             };
             var fl5 = new FlashcardsSet()
             {
-                Name = "Test5",
-                Description = "Test",
+                Name = "Праздники",
+                Description = "Даты праздников",
                 Flashcards = new ObservableCollection<Flashcard>()
                 {
                     new Flashcard() {Question = "what", Answer = "yes", Rating = 1},
@@ -108,8 +115,8 @@ namespace Memento.ViewModels
             };
             var fl6 = new FlashcardsSet()
             {
-                Name = "Test6",
-                Description = "Test",
+                Name = "Таблица Менделеева",
+                Description = "Номер - элемент",
                 Flashcards = new ObservableCollection<Flashcard>()
                 {
                     new Flashcard() {Question = "what", Answer = "yes", Rating = 1},
@@ -141,7 +148,7 @@ namespace Memento.ViewModels
             };
             #endregion
             Flashcards = new ObservableCollection<FlashcardsSet>() { fl, fl1, fl2, fl3, fl4, fl5, fl6, fl7, fl8 };
-
+            //Flashcards = SerializeHelper.Deserialize<ObservableCollection<FlashcardsSet>>("FlashcardsSets.json");
 
             FilterView = CollectionViewSource.GetDefaultView(Flashcards);
             FilterView.Filter = x =>
@@ -185,7 +192,7 @@ namespace Memento.ViewModels
 
             StartFlashcardsSetCommand = new RelayCommand<FlashcardsSet>((x) =>
             {
-                if (x == null) return;
+                if (x == null || x.Flashcards?.Count == 0) return;
                 var win = new Window()
                 {
                     Style = (Style)Application.Current.FindResource("CustomSubWindowStyle"),
@@ -204,6 +211,17 @@ namespace Memento.ViewModels
                         break;
                 }
             };
+        }
+
+        public async Task<bool> DisposeAsync()
+        {
+            await SerializeHelper.SerializeAsync("FlashcardsSets.json", Flashcards);
+            return true;
+        }
+
+        public bool Dispose()
+        {
+            return DisposeAsync().Result;
         }
     }
 }

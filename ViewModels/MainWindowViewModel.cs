@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Memento.Infrastructure.Interfaces;
 
 namespace Memento.ViewModels
 {
@@ -14,15 +16,17 @@ namespace Memento.ViewModels
     {
         public ICommand ToHomeViewCommand { get; set; }
         public ICommand ToFlashcardsViewCommand { get; set; }
+        public ICommand ToSettingsViewCommand { get; set; }
 
         public HomeViewModel HomeVM { get; set; }
         public FlashcardsViewModel FlashcardsVM { get; set; }
+        public SettingsViewModel SettingsVM { get; set; }
 
-        private object currentView;
+        private object _CurrentView;
         public object CurrentView
         {
-            get => currentView;
-            set => SetProperty(ref currentView, value);
+            get => _CurrentView;
+            set => SetProperty(ref _CurrentView, value);
         }
 
         public MainWindowViewModel()
@@ -30,10 +34,19 @@ namespace Memento.ViewModels
 
             HomeVM = new HomeViewModel();
             FlashcardsVM = new FlashcardsViewModel();
+            SettingsVM = new SettingsViewModel();
             CurrentView = HomeVM;
 
-            ToHomeViewCommand = new RelayCommand(() => CurrentView = HomeVM);
-            ToFlashcardsViewCommand = new RelayCommand(() => CurrentView = FlashcardsVM);
+            ToHomeViewCommand = new RelayCommand(() => NavigateTo(HomeVM));
+            ToFlashcardsViewCommand = new RelayCommand(() => NavigateTo(FlashcardsVM));
+            ToSettingsViewCommand = new RelayCommand(() => NavigateTo(SettingsVM));
+        }
+
+        internal void NavigateTo(object toViewModel)
+        {
+            if(CurrentView is IDisposableViewModel currVM)
+                currVM.Dispose();
+            CurrentView = toViewModel;
         }
     }
 }
