@@ -14,8 +14,17 @@
     <sys:String x:Key="lang_ShowAnswer">Показать ответ</sys:String>
     <sys:String x:Key="lang_HideAnswer">Спрятать ответ</sys:String>
     <sys:String x:Key="lang_Language">Язык</sys:String>
-    <sys:String x:Key="lang_NBack">-n назад</sys:String>
+    <sys:String x:Key="lang_2NBackName">2-n назад</sys:String>
+    <sys:String x:Key="lang_2NBackDescription">2-n назад</sys:String>
+    <sys:String x:Key="lang_3NBackName">3-n назад</sys:String>
+    <sys:String x:Key="lang_3NBackDescription">3-n назад</sys:String>
     <sys:String x:Key="lang_Russian">Русский</sys:String>
     <sys:String x:Key="lang_English">Английский</sys:String>
+    <sys:String x:Key="lang_FlashcardsSetStatisticsHeader">Статистика наборов флеш-карт</sys:String>
+    <sys:String x:Key="lang_FlashcardsSetAvailable">Доступно наборов флеш-карт:</sys:String>
+    <sys:String x:Key="lang_FlashcardsSetLastStarted">Последний запущенный набор флеш-карт:</sys:String>
+    <sys:String x:Key="lang_ExercisesStatisticsHeader">Статистика упражнений</sys:String>
+    <sys:String x:Key="lang_ExercisesSetAvailable">Доступно упражнений:</sys:String>
+    <sys:String x:Key="lang_ExercisesSetLastStarted">Последнее запущенное упражнение:</sys:String>
 
 </ResourceDictionary>

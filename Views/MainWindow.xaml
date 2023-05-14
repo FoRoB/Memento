@@ -55,7 +55,8 @@
                               Height="50"
                               Foreground="White"
                               FontSize="{StaticResource Regular}"
-                              Style="{StaticResource SideBarButtonStyle}"/>
+                              Style="{StaticResource SideBarButtonStyle}"
+                              Command="{Binding ToExercisesViewCommand}"/>
                 <RadioButton  Content="{DynamicResource lang_Settings}"
                               Height="50"
                               Foreground="White"

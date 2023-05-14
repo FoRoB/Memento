@@ -36,6 +36,8 @@ namespace Memento.ViewModels
             set => SetProperty(ref _Filter, value);
         }
 
+        public Stats Stats { get; set; }
+
         public ICommand AddFlashcardsSetCommand { get; set; }
         public ICommand DeleteFlashcardsSetCommand { get; set; }
         public ICommand SettingFlashcardsSetCommand { get; set; }
@@ -148,7 +150,21 @@ namespace Memento.ViewModels
             };
             #endregion
             Flashcards = new ObservableCollection<FlashcardsSet>() { fl, fl1, fl2, fl3, fl4, fl5, fl6, fl7, fl8 };
+
             //Flashcards = SerializeHelper.Deserialize<ObservableCollection<FlashcardsSet>>("FlashcardsSets.json");
+            if (File.Exists("FlashcardsStats.json"))
+            {
+                Stats = SerializeHelper.Deserialize<Stats>("FlashcardsStats.json");
+                Stats.AvailableCount = Flashcards?.Count ?? 0;
+            }
+            else
+            {
+                Stats = new Stats()
+                {
+                    AvailableCount = Flashcards?.Count ?? 0,
+                    LastStarted = "не запускалось"
+                };
+            }
 
             FilterView = CollectionViewSource.GetDefaultView(Flashcards);
             FilterView.Filter = x =>
@@ -193,6 +209,7 @@ namespace Memento.ViewModels
             StartFlashcardsSetCommand = new RelayCommand<FlashcardsSet>((x) =>
             {
                 if (x == null || x.Flashcards?.Count == 0) return;
+                RefreshStats(x.Name);
                 var win = new Window()
                 {
                     Style = (Style)Application.Current.FindResource("CustomSubWindowStyle"),
@@ -211,17 +228,30 @@ namespace Memento.ViewModels
                         break;
                 }
             };
+
+            Flashcards.CollectionChanged += (s, e) => RefreshStats();
         }
 
         public async Task<bool> DisposeAsync()
         {
             await SerializeHelper.SerializeAsync("FlashcardsSets.json", Flashcards);
+            await SerializeHelper.SerializeAsync("FlashcardsStats.json", Stats);
             return true;
         }
 
         public bool Dispose()
         {
             return DisposeAsync().Result;
+        }
+
+        private void RefreshStats()
+        {
+            Stats.AvailableCount = Flashcards?.Count ?? 0;
+        }
+        private void RefreshStats(string name)
+        {
+            RefreshStats();
+            Stats.LastStarted = name;
         }
     }
 }

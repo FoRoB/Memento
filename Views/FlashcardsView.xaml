@@ -5,11 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Memento.Views"
              xmlns:vm="clr-namespace:Memento.ViewModels"
+             d:DataContext="{d:DesignInstance Type=vm:FlashcardsViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="700">
-    <UserControl.DataContext>
-        <vm:FlashcardsViewModel/>
-    </UserControl.DataContext>
 
     <Border Background="{StaticResource MainUserControlBackgroundBrush}">
         <StackPanel>
@@ -19,18 +17,30 @@
                     Height="150"
                     Margin="0 10 0 0">
                 <StackPanel Margin="10">
-                    <TextBlock Text="Статистика наборов флеш-карт"
+                    <TextBlock Text="{DynamicResource lang_FlashcardsSetStatisticsHeader}"
                                Foreground="White"
                                FontSize="22"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Доступно наборов флеш-карт: 8"
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{DynamicResource lang_FlashcardsSetAvailable}"
                                Foreground="White"
                                FontSize="18"
                                Margin="0 10 0 0"/>
-                    <TextBlock Text="Последний запущенный набор флеш-карт: Правда или ложь"
+                        <TextBlock Text="{Binding Stats.AvailableCount}"
+                               Foreground="White"
+                               FontSize="18"
+                               Margin="10 10 0 0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{DynamicResource lang_FlashcardsSetLastStarted}"
                                Foreground="White"
                                FontSize="18"
                                Margin="0 10 0 0"/>
+                        <TextBlock Text="{Binding Stats.LastStarted}"
+                               Foreground="White"
+                               FontSize="18"
+                               Margin="10 10 0 0"/>
+                    </StackPanel>
                 </StackPanel>
             </Border>
             <DockPanel LastChildFill="False">

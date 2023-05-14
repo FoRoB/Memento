@@ -16,10 +16,12 @@ namespace Memento.ViewModels
     {
         public ICommand ToHomeViewCommand { get; set; }
         public ICommand ToFlashcardsViewCommand { get; set; }
+        public ICommand ToExercisesViewCommand { get; set; }
         public ICommand ToSettingsViewCommand { get; set; }
 
         public HomeViewModel HomeVM { get; set; }
         public FlashcardsViewModel FlashcardsVM { get; set; }
+        public ExercisesViewModel ExercisesVM { get; set; }
         public SettingsViewModel SettingsVM { get; set; }
 
         private object _CurrentView;
@@ -34,11 +36,13 @@ namespace Memento.ViewModels
 
             HomeVM = new HomeViewModel();
             FlashcardsVM = new FlashcardsViewModel();
+            ExercisesVM = new ExercisesViewModel();
             SettingsVM = new SettingsViewModel();
             CurrentView = HomeVM;
 
             ToHomeViewCommand = new RelayCommand(() => NavigateTo(HomeVM));
             ToFlashcardsViewCommand = new RelayCommand(() => NavigateTo(FlashcardsVM));
+            ToExercisesViewCommand = new RelayCommand(() => NavigateTo(ExercisesVM));
             ToSettingsViewCommand = new RelayCommand(() => NavigateTo(SettingsVM));
         }
 

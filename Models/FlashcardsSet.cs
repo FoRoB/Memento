@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace Memento.Models
 {
-    class FlashcardsSet : IEnumerable<Flashcard>
+    class FlashcardsSet
     {
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
@@ -28,27 +28,9 @@ namespace Memento.Models
             return toFc;
         }
 
-        public IEnumerator<Flashcard> GetEnumerator()
-        {
-            if (Flashcards != null)
-            {
-                foreach (var fc in Flashcards)
-                {
-                    yield return fc;
-                }
-            }
-            yield break;
-        }
         public IEnumerator<Flashcard> GetSortedEnumerator()
         {
-            if (Flashcards != null)
-            {
-                return Flashcards.OrderBy(x => x.Rating).GetEnumerator();
-            }
-            return GetEnumerator();
+            return Flashcards.OrderBy(x => x.Rating).GetEnumerator();
         }
-
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
-
 }

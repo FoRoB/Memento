@@ -8,7 +8,10 @@
              d:DataContext="{d:DesignInstance Type=vm:HomeViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="700">
-    
+    <UserControl.DataContext>
+        <vm:HomeViewModel/>
+    </UserControl.DataContext>
+
     <Border Background="{StaticResource MainUserControlBackgroundBrush}">
         <StackPanel>
             <Border Background="#4E6982"
@@ -17,18 +20,30 @@
                     Height="150"
                     Margin="0 30 0 0">
                 <StackPanel Margin="10">
-                    <TextBlock Text="Статистика наборов флеш-карт"
+                    <TextBlock Text="{DynamicResource lang_FlashcardsSetStatisticsHeader}"
                                Foreground="White"
                                FontSize="22"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Доступно наборов флеш-карт: 8"
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{DynamicResource lang_FlashcardsSetAvailable}"
                                Foreground="White"
                                FontSize="18"
                                Margin="0 10 0 0"/>
-                    <TextBlock Text="Последний запущенный набор флеш-карт: Правда или ложь"
+                        <TextBlock Text="{Binding StatsFlashcards.AvailableCount}"
+                               Foreground="White"
+                               FontSize="18"
+                               Margin="10 10 0 0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{DynamicResource lang_FlashcardsSetLastStarted}"
                                Foreground="White"
                                FontSize="18"
                                Margin="0 10 0 0"/>
+                        <TextBlock Text="{Binding StatsFlashcards.LastStarted}"
+                               Foreground="White"
+                               FontSize="18"
+                               Margin="10 10 0 0"/>
+                    </StackPanel>
                 </StackPanel>
             </Border>
             <Border Background="#4E6982"
@@ -37,18 +52,30 @@
                     Height="150"
                     Margin="0 30 0 0">
                 <StackPanel Margin="10">
-                    <TextBlock Text="Статистика упражнений"
-                               Foreground="White"
-                               FontSize="22"
-                               HorizontalAlignment="Center"/>
-                    <TextBlock Text="Доступно упражнений: 2"
-                               Foreground="White"
-                               FontSize="18"
-                               Margin="0 10 0 0"/>
-                    <TextBlock Text="Последнее запущенное упражнение: 2-n назад"
-                               Foreground="White"
-                               FontSize="18"
-                               Margin="0 10 0 0"/>
+                    <TextBlock Text="{DynamicResource lang_ExercisesStatisticsHeader}"
+                                Foreground="White"
+                                FontSize="22"
+                                HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{DynamicResource lang_ExercisesSetAvailable}"
+                                   Foreground="White"
+                                   FontSize="18"
+                                   Margin="0 10 0 0"/>
+                        <TextBlock Text="{Binding StatsExercises.AvailableCount}"
+                                   Foreground="White"
+                                   FontSize="18"
+                                   Margin="10 10 0 0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{DynamicResource lang_ExercisesSetLastStarted}"
+                                   Foreground="White"
+                                   FontSize="18"
+                                   Margin="0 10 0 0"/>
+                        <TextBlock Text="{Binding StatsExercises.LastStarted}"
+                                   Foreground="White"
+                                   FontSize="18"
+                                   Margin="10 10 0 0"/>
+                    </StackPanel>
                 </StackPanel>
             </Border>
         </StackPanel>

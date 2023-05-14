@@ -11,9 +11,10 @@ namespace Memento.Infrastructure
 {
     internal static class SerializeHelper
     {
+
         public static void Serialize(string path, object obj)
         {
-            using (var fs = new FileStream(path, FileMode.OpenOrCreate))
+            using (var fs = new FileStream(path, FileMode.Create))
             {
                 JsonSerializer.Serialize(fs, obj);
             }
@@ -27,7 +28,7 @@ namespace Memento.Infrastructure
         }
         public static async Task SerializeAsync(string path, object obj)
         {
-            using (var fs = new FileStream(path, FileMode.OpenOrCreate))
+            using (var fs = new FileStream(path, FileMode.Create))
             {
                 await JsonSerializer.SerializeAsync(fs, obj);
             }
